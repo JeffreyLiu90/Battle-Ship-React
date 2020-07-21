@@ -31,8 +31,14 @@ function Board() {
 
   const [boardSquares, setBoardSquares] = useState(boardPositions);
 
-  const handleClick = () => {
+  const handleClick = index => {
     console.log("hit");
+    const squares = [...boardSquares];
+    let currentIndex = squares.indexOf(squares[index]);
+    console.log(currentIndex);
+    squares[currentIndex] = "hit";
+    setBoardSquares(squares);
+    // console.log("hey", squares.indexOf(squares[index]));
   };
 
   const renderSquare = index => {
@@ -43,11 +49,6 @@ function Board() {
       ></Tiles>
     );
   };
-
-  console.log(
-    "func",
-    boardSquares.map((item, index) => item + " index: " + index)
-  );
 
   return (
     <div>
